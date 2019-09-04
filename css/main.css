@@ -1,0 +1,49 @@
+body {
+    background: #363635;
+    border: solid 5px #363635;
+}
+
+.top-left {
+    background: #AC3931;
+}
+
+.top-center {
+    background: #FCAA67;
+
+}
+
+.top-right {
+    background: #E8C547;
+}
+
+.middle-left {
+    background: #ED9B40;
+    min-height: 35px;
+}
+
+.middle-center {
+    background: #E8E8E8;
+    min-height: 600px;
+}
+
+.middle-right {
+    background: #03CEA4;
+    min-height: 35px;
+}
+
+.bottom-left {
+    background: #CCE2A3;
+}
+
+.bottom-center {
+    background: #4062BB;
+    min-height: 35px;
+}
+
+.bottom-right {
+    background: #52489C;
+}
+
+.sashing {
+    border: solid 5px #363635;
+}
