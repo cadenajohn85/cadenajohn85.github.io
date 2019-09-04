@@ -2,6 +2,10 @@
 
 $(document).ready(function() {
 
-    // INSERT JAVASCRIPT CODE SAMPLE HERE
+    $("#contact").click(function() {
+        $("#viewport").html(
+          "Resume content goes here"
+        );
+    });
 
 });
