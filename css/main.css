@@ -72,23 +72,20 @@ nav ul {
 
 .navbar-item {
     background: #363635;
-    border-radius: 5px;
-    font-size: 1.25em;
+    font-size: 1.75em;
 }
 
 .navbar-item a {
     color: #E8C547;
 }
 
-/*Styling variations for pill-style links in nav bars*/
+.navbar-item:nth-of-type(odd) {
+    border-radius: 5px 5px 0 0;
+}
 
-/*.navbar-item:nth-of-type(odd) {*/
-/*    border-radius: 5px 0 0 5px;*/
-/*}*/
-
-/*.navbar-item:nth-of-type(even) {*/
-/*    border-radius: 0 5px 5px 0;*/
-/*}*/
+.navbar-item:nth-of-type(even) {
+    border-radius: 0 0 5px 5px;
+}
 
 /*Middle-center box: Viewport*/
     /*Dynamic elements styled at bottom of style-sheet*/
