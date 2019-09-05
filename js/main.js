@@ -2,15 +2,6 @@
 
 $(document).ready(function() {
 
-    // Placeholder text variable
-
-    var lorem = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci atque consequuntur dicta eos est eveniet illum in ipsa iure laudantium magni minus perferendis, qui quos sint sit tempore veniam.</p>";
-    lorem += "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci atque consequuntur dicta eos est eveniet illum in ipsa iure laudantium magni minus perferendis, qui quos sint sit tempore veniam.</p>";
-    lorem += "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci atque consequuntur dicta eos est eveniet illum in ipsa iure laudantium magni minus perferendis, qui quos sint sit tempore veniam.</p>";
-    lorem += "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci atque consequuntur dicta eos est eveniet illum in ipsa iure laudantium magni minus perferendis, qui quos sint sit tempore veniam.</p>";
-    lorem += "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci atque consequuntur dicta eos est eveniet illum in ipsa iure laudantium magni minus perferendis, qui quos sint sit tempore veniam.</p>";
-    lorem += "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci atque consequuntur dicta eos est eveniet illum in ipsa iure laudantium magni minus perferendis, qui quos sint sit tempore veniam.</p>";
-
     // NavBar click functions
 
     $("#resume").click(function(event) {
@@ -65,10 +56,15 @@ $(document).ready(function() {
 
     $("#background").click(function(event) {
         event.preventDefault();
-        $("#viewport").html(
-            "<p>Personal background information goes here</p>"
-        );
-        $("#viewport").append(lorem);
+
+        var dynamicHtml = "<p class='mt-4 mx-3'>";
+        dynamicHtml += "John has proudly called San Antonio \"home\" for most of his life . A product of local schools, he went on to study at Stanford University in California. After spending a semester abroad in Kyoto, Japan and graduating from Stanford with a B.A. in Japanese, John returned to the Alamo City to help start the burgeoning Japanese-language program in North East I.S.D. During John's twelve years as a Japanese educator, he also served the district in various capacities, taking on roles as project committee member, professional developer and department chair. In addition to holding office in the Japanese Teacher's Association of Texas, he has also presented on best practices in World Language educaton at local, state, and national conferences.";
+        dynamicHtml += "</p>";
+
+        dynamicHtml += "<p>";
+        dynamicHtml += "</p>";
+
+        $("#viewport").html(dynamicHtml);
     });
 
     $("#contact").click(function(event) {
