@@ -30,8 +30,9 @@ $(document).ready(function() {
     $("#background").click(function(event) {
         event.preventDefault();
         $("#viewport").html(
-            "Personal background information goes here"
+            "<p>Personal background information goes here</p>"
         );
+        $("#viewport").append(lorem);
     });
 
     $("#contact").click(function(event) {

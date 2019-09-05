@@ -52,8 +52,8 @@ body {
 
 .middle-center {
     background: #E8E8E8;
-    min-height: 425px;
-    overflow: scroll;
+    height: 425px;
+    overflow: auto;
 }
 
 .middle-right {
