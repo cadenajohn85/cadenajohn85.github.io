@@ -3,6 +3,12 @@ body {
     border: solid 5px #363635;
 }
 
+.sashing {
+    border: solid 5px #363635;
+}
+
+/*Top-left box: brand bar*/
+
 .top-left {
     background: #AC3931;
 }
@@ -20,34 +26,14 @@ body {
     border-radius: 0 0 5px 5px;
 }
 
+/*Top-center box: color blocking*/
+
 .top-center {
     background: #FCAA67;
     min-height: 35px;
 }
 
-nav ul {
-    margin: 1em auto;
-}
-
-.navbar-item {
-    background: #363635;
-    border-radius: 5px;
-    font-size: 1.25em;
-}
-
-.navbar-item a {
-    color: #E8C547;
-}
-
-/*Styling variations for pill-style links in nav bars*/
-
-/*.navbar-item:nth-of-type(odd) {*/
-/*    border-radius: 5px 0 0 5px;*/
-/*}*/
-
-/*.navbar-item:nth-of-type(even) {*/
-/*    border-radius: 0 5px 5px 0;*/
-/*}*/
+/*Top-right box: profile image*/
 
 .top-right {
     background: #E8C547;
@@ -69,10 +55,43 @@ nav ul {
     filter: grayscale(0%);
 }
 
+/*Middle-left box: Nav Bar*/
+
 .middle-left {
     background: #ED9B40;
     min-height: 35px;
 }
+
+nav ul {
+    /*background: red;*/
+}
+
+/*nav ul {*/
+/*    margin: 1em auto;*/
+/*}*/
+
+.navbar-item {
+    background: #363635;
+    border-radius: 5px;
+    font-size: 1.25em;
+}
+
+.navbar-item a {
+    color: #E8C547;
+}
+
+/*Styling variations for pill-style links in nav bars*/
+
+/*.navbar-item:nth-of-type(odd) {*/
+/*    border-radius: 5px 0 0 5px;*/
+/*}*/
+
+/*.navbar-item:nth-of-type(even) {*/
+/*    border-radius: 0 5px 5px 0;*/
+/*}*/
+
+/*Middle-center box: Viewport*/
+    /*Dynamic elements styled at bottom of style-sheet*/
 
 .middle-center {
     background: #E8E8E8;
@@ -80,32 +99,36 @@ nav ul {
     overflow: auto;
 }
 
+/*Middle-right box: color blocking*/
+
 .middle-right {
     background: #03CEA4;
     min-height: 35px;
 }
 
+/*Bottom-left box: social media icons*/
+
 .bottom-left {
     background: #CCE2A3;
 }
+
+/*Bottom-center box: color blocking*/
 
 .bottom-center {
     background: #4062BB;
     min-height: 35px;
 }
 
+/*Bottom-right box: color blocking*/
+
 .bottom-right {
     background: #52489C;
     min-height: 35px;
 }
 
-.sashing {
-    border: solid 5px #363635;
-}
-
 /*Styling of dynamic elements*/
-/*    Styling of project portfolio cards*/
 
+/*    Styling of project portfolio cards*/
 
 #portfolio-list {
     color: #E8C547;
