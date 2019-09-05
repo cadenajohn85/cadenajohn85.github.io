@@ -2,6 +2,8 @@
 
 $(document).ready(function() {
 
+    // NavBar click functions
+
     $("#resume").click(function(event) {
         event.preventDefault();
         $("#viewport").html(
@@ -33,5 +35,13 @@ $(document).ready(function() {
         dynamicHtml += "</ul>";
         $("#viewport").html(dynamicHtml);
     });
+
+    // Profile Photo Hover Effect
+
+    // $("#profile-image").hover(function() {
+    //    $(this).attr("src", "img/profile-color.jpg");
+    // }, function() {
+    //     $(this).attr("src", "img/profile-bw.jpg");
+    // });
 
 });

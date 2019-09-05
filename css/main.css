@@ -16,6 +16,21 @@ body {
     background: #E8C547;
 }
 
+.profile-image {
+    display: block;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    border-radius: 50%;
+    border: solid 1px #363635;
+    filter: grayscale(100%);
+    transition: filter .5s ease-in-out;
+}
+
+.profile-image:hover {
+    filter: grayscale(0%);
+}
+
 .middle-left {
     background: #ED9B40;
     min-height: 35px;
