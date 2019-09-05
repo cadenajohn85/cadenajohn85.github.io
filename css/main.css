@@ -23,6 +23,8 @@ body {
     margin: auto;
     border-radius: 50%;
     border: solid 1px #363635;
+    /*Filter effect*/
+    /*Source: http://www.codeblocq.com/2016/08/Turn-an-image-to-Black-and-White-on-hover-with-CSS/*/
     filter: grayscale(100%);
     transition: filter .5s ease-in-out;
 }
