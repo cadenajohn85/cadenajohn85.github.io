@@ -41,6 +41,7 @@ body {
 .middle-center {
     background: #E8E8E8;
     min-height: 480px;
+    overflow: scroll;
 }
 
 .middle-right {
