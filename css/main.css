@@ -104,8 +104,42 @@ nav ul {
 }
 
 /*Styling of dynamic elements*/
+/*    Styling of project portfolio cards*/
+
+
+#portfolio-list {
+    color: #E8C547;
+}
+
+.port-header {
+    background: #363635;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+
+.port-header * {
+    padding: 5px;
+}
+
+.port-image-container {
+    background: #363635;
+    /*margin: 5px 0;*/
+    margin-bottom: 8px;
+}
 
 .port-image {
-    height: 200px;
-    width: 200px;
+    width: 400px;
+    height: 100%;
+    padding: 10px;
+    display: block;
+    margin: auto;
+}
+
+.port-description {
+    background: #363635;
+    border-radius: 0 0 5px 5px ;
+}
+
+.port-description p {
+    padding: 5px 10px;
 }

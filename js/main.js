@@ -38,12 +38,12 @@ $(document).ready(function() {
         ];
 
         function buildPortfolioCard(projectObject) {
-            var cardHtml = "<li>";
+            var cardHtml = "<li class='mb-5'>";
                 cardHtml += "<div class='port-header'>";
                     cardHtml += "<h2>" + projectObject.name + "</h2>";
                 cardHtml += "</div>";
 
-                cardHtml += "<div>";
+                cardHtml += "<div class='port-image-container'>";
                     cardHtml += "<img class='port-image' src='" + projectObject.imgSrc + "'>";
                 cardHtml += "</div>";
 
@@ -54,8 +54,8 @@ $(document).ready(function() {
             return cardHtml;
         }
 
-        var dynamicHtml = "<h1 class='mt-4 ml-3'>Project Portfolio</h1>";
-        dynamicHtml += "<ul id='portfolio-list' class='list-unstyled mt-4 ml-3'>";
+        var dynamicHtml = "<h1 class='mt-4 mx-3'>Project Portfolio</h1>";
+        dynamicHtml += "<ul id='portfolio-list' class='list-unstyled mt-4 mx-3'>";
             projectPortfolio.forEach(function(project) {
                 dynamicHtml += buildPortfolioCard(project);
             });
