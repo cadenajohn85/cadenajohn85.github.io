@@ -7,9 +7,22 @@ body {
     background: #AC3931;
 }
 
+.brand-bar {
+    background: #363635;
+    color: #E8C547;
+}
+
+.brand-bar:nth-of-type(odd) {
+    border-radius: 5px 5px 0 0;
+}
+
+.brand-bar:nth-of-type(even) {
+    border-radius: 0 0 5px 5px;
+}
+
+
 .top-center {
     background: #FCAA67;
-
 }
 
 .top-right {
@@ -20,7 +33,6 @@ body {
     display: block;
     height: 200px;
     width: 200px;
-    margin: auto;
     border-radius: 50%;
     border: solid 1px #363635;
     /*Filter effect*/
@@ -40,7 +52,7 @@ body {
 
 .middle-center {
     background: #E8E8E8;
-    min-height: 480px;
+    min-height: 425px;
     overflow: scroll;
 }
 
