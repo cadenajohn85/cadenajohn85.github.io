@@ -20,10 +20,26 @@ body {
     border-radius: 0 0 5px 5px;
 }
 
-
 .top-center {
     background: #FCAA67;
 }
+
+.navbar-item {
+    background: #363635;
+}
+
+.navbar-item a {
+    color: #E8C547;
+}
+
+.navbar-item:first-of-type {
+    border-radius: 5px 0 0 5px;
+}
+
+.navbar-item:last-of-type {
+    border-radius: 0 5px 5px 0;
+}
+
 
 .top-right {
     background: #E8C547;
