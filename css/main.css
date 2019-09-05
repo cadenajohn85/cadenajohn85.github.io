@@ -22,24 +22,32 @@ body {
 
 .top-center {
     background: #FCAA67;
+    min-height: 35px;
+}
+
+nav ul {
+    margin: 1em auto;
 }
 
 .navbar-item {
     background: #363635;
+    border-radius: 5px;
+    font-size: 1.25em;
 }
 
 .navbar-item a {
     color: #E8C547;
 }
 
-.navbar-item:first-of-type {
-    border-radius: 5px 0 0 5px;
-}
+/*Styling variations for pill-style links in nav bars*/
 
-.navbar-item:last-of-type {
-    border-radius: 0 5px 5px 0;
-}
+/*.navbar-item:nth-of-type(odd) {*/
+/*    border-radius: 5px 0 0 5px;*/
+/*}*/
 
+/*.navbar-item:nth-of-type(even) {*/
+/*    border-radius: 0 5px 5px 0;*/
+/*}*/
 
 .top-right {
     background: #E8C547;
@@ -93,4 +101,11 @@ body {
 
 .sashing {
     border: solid 5px #363635;
+}
+
+/*Styling of dynamic elements*/
+
+.port-image {
+    height: 200px;
+    width: 200px;
 }

@@ -22,9 +22,45 @@ $(document).ready(function() {
 
     $("#portfolio").click(function(event) {
         event.preventDefault();
-        $("#viewport").html(
-            "Portfolio links go here"
-        );
+
+        var projectPortfolio = [
+            {
+                name: "10-Key Weather",
+                imgSrc: "img/weather-map-sc.png",
+                description: "A web-based weather forecast app that makes use of the Dark Sky and Mapbox APIs."
+            },
+
+            {
+                name: "Memory",
+                imgSrc: "img/memory-sc.png",
+                description: "A JavaScript build of the classic children's picture-matching game."
+            }
+        ];
+
+        function buildPortfolioCard(projectObject) {
+            var cardHtml = "<li>";
+                cardHtml += "<div class='port-header'>";
+                    cardHtml += "<h2>" + projectObject.name + "</h2>";
+                cardHtml += "</div>";
+
+                cardHtml += "<div>";
+                    cardHtml += "<img class='port-image' src='" + projectObject.imgSrc + "'>";
+                cardHtml += "</div>";
+
+                cardHtml += "<div class='port-description'>";
+                    cardHtml += "<p>" + projectObject.description + "</p>";
+                cardHtml += "</div>";
+            cardHtml += "</li>";
+            return cardHtml;
+        }
+
+        var dynamicHtml = "<h1 class='mt-4 ml-3'>Project Portfolio</h1>";
+        dynamicHtml += "<ul id='portfolio-list' class='list-unstyled mt-4 ml-3'>";
+            projectPortfolio.forEach(function(project) {
+                dynamicHtml += buildPortfolioCard(project);
+            });
+        dynamicHtml += "</ul>";
+        $("#viewport").html(dynamicHtml);
     });
 
     $("#background").click(function(event) {
