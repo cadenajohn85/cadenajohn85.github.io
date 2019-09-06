@@ -58,7 +58,20 @@ $(document).ready(function() {
         event.preventDefault();
 
         var dynamicHtml = "<p class='mt-4 mx-3'>";
-        dynamicHtml += "John has proudly called San Antonio \"home\" for most of his life . A product of local schools, he went on to study at Stanford University in California. After spending a semester abroad in Kyoto, Japan and graduating from Stanford with a B.A. in Japanese, John returned to the Alamo City to help start the burgeoning Japanese-language program in North East I.S.D. During John's twelve years as a Japanese educator, he also served the district in various capacities, taking on roles as project committee member, professional developer and department chair. In addition to holding office in the Japanese Teacher's Association of Texas, he has also presented on best practices in World Language educaton at local, state, and national conferences.";
+        // dynamicHtml += "John has proudly called San Antonio \"home\" for most of his life . A product of local schools, he went on to study at Stanford University in California. After spending a semester abroad in Kyoto, Japan and graduating from Stanford with a B.A. in Japanese, John returned to the Alamo City to help start the burgeoning Japanese-language program in North East I.S.D. During John's twelve years as a Japanese educator, he also served the district in various capacities, taking on roles as project committee member, professional developer and department chair. In addition to holding office in the Japanese Teacher's Association of Texas, he has also presented on best practices in World Language education at local, state, and national conferences.";
+        // dynamicHtml += "</p>";
+
+        dynamicHtml += "John has proudly called San Antonio \"home\" for most of his life . After graduating from Stanford with a B.A. in Japanese, he returned to the Alamo City to help start the burgeoning Japanese-language program in North East I.S.D. During John's twelve years as a Japanese educator, he also served the district in various capacities, taking on roles as project committee member, professional developer and department chair.";
+        dynamicHtml += "</p>";
+
+
+
+        dynamicHtml += "<blockquote>";
+            dynamicHtml += "\"I feel like my time in the classroom gave me a unique perspective on design thinking and user experience. Every day, I was tasked with creating engaging lessons that would inspire students to buy into their own learning, while still satisfying a myriad of requirements and specifications from various stakeholders.";
+        dynamicHtml += "</blockquote>";
+
+        dynamicHtml += "<p>";
+        dynamicHtml += "Test test test.";
         dynamicHtml += "</p>";
 
         dynamicHtml += "<p>";
