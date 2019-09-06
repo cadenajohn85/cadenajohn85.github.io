@@ -125,7 +125,7 @@ nav ul {
 
 /*Styling of dynamic elements*/
 
-/*    Styling of project portfolio cards*/
+    /*Styling of project portfolio cards*/
 
 #portfolio-list {
     color: #E8C547;
@@ -162,4 +162,15 @@ nav ul {
 
 .port-description p {
     padding: 5px 10px;
+}
+
+    /*Styling of "Background" section items*/
+
+blockquote {
+    background: #363635;
+    color: #E8C547;
+    border-radius: 5px;
+    padding: 10px 20px;
+    /*margin: 0 8px 16px;*/
+    margin: 0 .5em 1em;
 }
