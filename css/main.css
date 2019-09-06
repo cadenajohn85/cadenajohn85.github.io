@@ -194,3 +194,20 @@ blockquote {
     }
 
 }
+
+@media (max-width: 500px) {
+
+    #custom .profile-image {
+        height: 100px;
+        width: 100px;
+    }
+
+    #contact-info-list {
+        font-size: 1.25em;
+    }
+
+    #custom .port-image {
+        width: 300px;
+    }
+
+}
