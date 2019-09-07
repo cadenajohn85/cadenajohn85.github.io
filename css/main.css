@@ -181,18 +181,21 @@ blockquote {
 }
 
 /*Media Queries for Breakpoints*/
-@media (min-width: 769px) {
-    #custom #navbar-list {
-        flex-direction: column;
+
+@media (max-width: 953px) {
+    #custom .port-image {
+        width: 300px;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
-    #custom .navbar-item {
-        font-size: 1em;
-        border-radius: 5px;
-        margin: 0 5px;
+    #custom #brand h1 {
+        font-size: 2em;
+    }
+
+    #custom #brand h2 {
+        font-size: 1.75em;
     }
 
     #custom .profile-image {
@@ -202,26 +205,36 @@ blockquote {
 
 }
 
+@media (min-width: 768px) {
+    #custom #navbar-list {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 767px) {
+    #custom .navbar-item {
+        font-size: 1em;
+        border-radius: 5px;
+        margin: 0 5px;
+    }
+}
+
+/*iPhone 6/7/8 Plus, Pixel 2*/
 @media (max-width: 499px) {
 
-    #custom .profile-image {
-        height: 100px;
-        width: 100px;
-    }
-
     #custom #contact-info-list {
-        font-size: 1.25em;
-    }
-
-    #custom .port-image {
-        width: 300px;
-        margin: auto;
+        font-size: 1.5em;
     }
 
 }
 
 /*Galaxy S5 (360px), iPhone 6/7/8/X (375px) */
 @media (max-width: 380px) {
+
+    #custom .profile-image {
+        height: 100px;
+        width: 100px;
+    }
 
     #custom #navbar-list {
         flex-wrap: wrap;
@@ -234,7 +247,6 @@ blockquote {
 
     #custom .port-image {
         width: 200px;
-        margin: auto;
     }
 
 }
