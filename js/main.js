@@ -7,7 +7,8 @@ $(document).ready(function() {
     $("#resume").click(function(event) {
         event.preventDefault();
         $("#viewport").html(
-            "Resume content goes here"
+            ""
+            // "Resume content goes here"
         );
     });
 

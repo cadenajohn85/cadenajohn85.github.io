@@ -2,9 +2,189 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Memory Game</title>
+    <style>
+
+        header {
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            height: 200px;
+            width: 200px;
+            background-color: forestgreen;
+            border-radius: 5px;
+            border: 2px solid black;
+            margin: 10px;
+            background-size: 100% 100%;
+        }
+
+        img {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        #new-game-button {
+            width: 225px;
+            font-size: 1.5em;
+            border-radius: 5px;
+            margin-top: 1em;
+        }
+
+
+
+    </style>
 </head>
 <body>
-$END$
+
+<header>
+    <h1>Memory</h1>
+</header>
+
+<main>
+    <div id="card-row-1" class="card-row">
+        <div id="card-1" class="card">
+            <img src="" alt="">
+        </div>
+        <div id="card-2" class="card">
+            <img src="" alt="">
+        </div>
+        <div id="card-3" class="card">
+            <img src="" alt="">
+        </div>
+        <div id="card-4" class="card">
+            <img src="" alt="">
+        </div>
+    </div>
+    <div id="card-row-2" class="card-row">
+        <div id="card-5" class="card">
+            <img src="" alt="">
+        </div>
+        <div id="card-6" class="card">
+            <img src="" alt="">
+        </div>
+        <div id="card-7" class="card">
+            <img src="" alt="">
+        </div>
+        <div id="card-8" class="card">
+            <img src="" alt="">
+        </div>
+    </div>
+    <button id="new-game-button">Start a new game</button>
+</main>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    "use strict";
+
+    $(document).ready(function() {
+
+        var cardImageSources = [
+            "img/okonomiyaki.png",
+            "img/okonomiyaki.png",
+            "img/ramen.png",
+            "img/ramen.png",
+            "img/sushi.png",
+            "img/sushi.png",
+            "img/takoyaki.png",
+            "img/takoyaki.png"
+        ];
+
+        //Function to randomly shuffle array values and return the shuffled array
+        function shuffleImageBank(arrayOfImageSources) {
+            //Source: https://javascript.info/task/shuffle
+            for (var i = arrayOfImageSources.length-1; i>0; i--) {
+                var j = Math.floor(Math.random() * (i+1));
+                [arrayOfImageSources[i], arrayOfImageSources[j]] = [arrayOfImageSources[j], arrayOfImageSources[i]];
+            }
+            return arrayOfImageSources;
+        }
+
+        //Function to assign the randomized array as the src of each image tag
+        function dealCards(shuffledArray) {
+            $("img").each(function (index) {
+                //var tempUrl = 'url("' + shuffledArray[index] + '")';
+                $(this).attr("src", shuffledArray[index]);
+            });
+        }
+
+        //Clicking on "New Game" Button rearranges images
+        $("#new-game-button").click(function() {
+            var shuffledDeck = shuffleImageBank(cardImageSources);
+            dealCards(shuffledDeck);
+            $(this).hide();
+
+            //Every time 2 cards are flipped, decide if they're a match and take appropriate actions
+            var clickCount = 0;
+            var cardValues = [];
+
+            //Every time a match is found, increment matchCount. When matchCount = 4,
+            var matchCount = 0;
+
+            //Clicking on a card displays the image, and turns the background white
+            $(".card").click(function() {
+                $(this).children().css("display", "block");
+                $(this).css("background", "white");
+                ++clickCount;
+                cardValues.push($(this).children().attr("src"));
+                //When two cards are flipped over,
+                if (clickCount === 2) {
+                    //Check if they match
+                    if (cardValues[0] === cardValues[1]) {
+                        setTimeout(function() {
+                            alert("You've got a match!");
+                        }, 250);
+                        ++matchCount;
+                        //Set these two cards to visibility: hidden;
+                        setTimeout(function() {
+                            $("img").each(function() {
+                                if($(this).css("display") === "block") {
+                                    $(this).parent().css("visibility", "hidden");
+                                }
+                            })
+                        }, 750);
+                    } else {
+                        //Set the two showing images to display: none after .75 seconds
+                        setTimeout(function() {
+                            $("img").each(function() {
+                                if($(this).css("display") === "block") {
+                                    $(this).parent().css("background", "green");
+                                    $(this).css("display", "none");
+                                }
+                            })
+                        }, 750);
+                    }
+                    clickCount = 0;
+                    cardValues = [];
+                    if (matchCount === 4) {
+                        setTimeout(function() {
+                            $(".card").each(function() {
+                                console.log($(this));
+                                $(this).css("visibility", "visible");
+                                $(this).children().css("display", "none");
+                                $(this).css("background", "green");
+                            });
+                            $(".card").off();
+                            $("#new-game-button").show();
+                        }, 2000);
+                    }
+                }
+            });
+        });
+    });
+
+</script>
 </body>
 </html>
