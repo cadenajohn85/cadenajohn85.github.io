@@ -19,12 +19,14 @@ $(document).ready(function() {
             {
                 name: "10-Key Weather",
                 imgSrc: "img/weather-map-sc.png",
+                href: "http://google.com",
                 description: "A web-based weather forecast app that makes use of the Dark Sky and Mapbox APIs."
             },
 
             {
                 name: "Memory",
                 imgSrc: "img/memory-sc.png",
+                href: "port/mem/memory.html",
                 description: "A JavaScript build of the classic children's picture-matching game."
             }
         ];
@@ -36,7 +38,9 @@ $(document).ready(function() {
                 cardHtml += "</div>";
 
                 cardHtml += "<div class='port-image-container'>";
-                    cardHtml += "<img class='port-image' src='" + projectObject.imgSrc + "'>";
+                    cardHtml += "<a href='" + projectObject.href + "' target='_blank'>";
+                        cardHtml += "<img class='port-image' src='" + projectObject.imgSrc + "'>";
+                    cardHtml += "</a>";
                 cardHtml += "</div>";
 
                 cardHtml += "<div class='port-description'>";
