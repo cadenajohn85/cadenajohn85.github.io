@@ -228,8 +228,8 @@ blockquote {
 
 }
 
-/*iPhone 5/SE*/
-@media (max-width: 325px) {
+/*Galaxy S5 */
+@media (max-width: 365px) {
 
     #custom #navbar-list {
         flex-wrap: wrap;
@@ -243,6 +243,11 @@ blockquote {
         width: 200px;
         margin: auto;
     }
+
+}
+
+/*iPhone 5/SE*/
+@media (max-width: 325px) {
 
     #custom #contact-info-list {
         font-size: 1em;
