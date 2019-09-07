@@ -171,8 +171,13 @@ blockquote {
     color: #E8C547;
     border-radius: 5px;
     padding: 10px 20px;
-    /*margin: 0 8px 16px;*/
     margin: 0 .5em 1em;
+}
+
+    /*Styling of "Contact" section items*/
+
+#contact-info-list {
+    font-size: 1.5em;
 }
 
 /*Media Queries for Breakpoints*/
@@ -204,13 +209,43 @@ blockquote {
         width: 100px;
     }
 
-    #contact-info-list {
+    #custom #contact-info-list {
         font-size: 1.25em;
     }
 
     #custom .port-image {
         width: 300px;
         margin: auto;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    #custom .navbar-item {
+        margin: 0 3px;
+    }
+
+}
+
+/*iPhone 5/SE*/
+@media (max-width: 325px) {
+
+    #custom #navbar-list {
+        flex-wrap: wrap;
+    }
+
+    #custom .navbar-item {
+        margin: 0 5px;
+    }
+
+    #custom .port-image {
+        width: 200px;
+        margin: auto;
+    }
+
+    #custom #contact-info-list {
+        font-size: 1em;
     }
 
 }

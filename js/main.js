@@ -114,7 +114,7 @@ $(document).ready(function() {
         dynamicHtml += "</ul>";
 
         $("#viewport").html(dynamicHtml);
-        $("#contact-info-list").css("font-size", "1.5em");
+
     });
 
 });
