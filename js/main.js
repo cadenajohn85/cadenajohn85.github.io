@@ -19,7 +19,7 @@ $(document).ready(function() {
             {
                 name: "10-Key Weather",
                 imgSrc: "img/weather-map-sc.png",
-                href: "http://google.com",
+                href: "port/tenkey/tenkey.html",
                 description: "A web-based weather forecast app that makes use of the Dark Sky and Mapbox APIs."
             },
 
