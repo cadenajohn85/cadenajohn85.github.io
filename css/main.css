@@ -219,8 +219,8 @@ blockquote {
 
 }
 
-/*Galaxy S5 (360px), iPhone 6/7/8/X (375px) */
-@media (max-width: 380px) {
+/*iPhone 5/SE (325px), Galaxy S5 (360px), iPhone 6/7/8/X (375px) */
+@media (max-width: 390px) {
 
     #custom .profile-image {
         height: 100px;
@@ -239,11 +239,6 @@ blockquote {
     #custom .port-image {
         width: 200px;
     }
-
-}
-
-/*iPhone 5/SE*/
-@media (max-width: 325px) {
 
     #custom #contact-info-list {
         font-size: 1em;
