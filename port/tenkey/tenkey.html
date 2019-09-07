@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />-->
+    <title>10-Key Weather | テンキー予報</title>
+    <!--    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css' type='text/css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+
+        body {
+            background: #1B3868;
+        }
+
+        /*Left side of page*/
+        .left-side-color {
+            color: #EFF2F4;
+            background: #1B3868;
+        }
+
+        /*For Font Awesome icons in brand*/
+        i {
+            font-size: 75px;
+        }
+
+        #current-location {
+            color: #FF934F;
+        }
+
+        .card {
+            color: #161925;
+            border: solid 1px #1B3868;
+            min-width: 275px;
+        }
+
+        .bigger-text {
+            font-size: 1.25em;
+        }
+
+        .card-header {
+            background: #8EB8E5;
+        }
+
+        .hi-temp {
+            color: red;
+        }
+
+        .lo-temp {
+            color: blue;
+        }
+
+        /*Right side of page*/
+
+        .right-side-color {
+            background: #8EB8E5;
+        }
+
+        #current-info {
+            border: 1px solid #161925;
+            border-radius: 5px;
+            color: #161925;
+            background: white;
+        }
+
+        #map-display {
+            margin: 0 auto;
+            width: 100%;
+            height: 450px;
+        }
+
+        .seven-day-name {
+            border: 1px solid #161925;
+            border-radius: 5px 5px 0 0;
+            color: #EFF2F4;
+            background: #1B3868;
+        }
+
+        .seven-day-icon {
+            border: 1px solid #161925;
+            border-radius: 0 0 5px 5px;
+            background: white;
+        }
+
+        /*Media Queries*/
+
+        /*Make 3-Day Cards display in column at larger breakpoints*/
+        @media (min-width: 1200px) {
+            #three-day-forecast-display {
+                flex-direction: column;
+                height: 600px;
+                overflow: scroll;
+            }
+
+            /*Necessary to keep scroll-functionality from cutting off top:*/
+            /*(https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container)*/
+            .card {
+                margin: auto;
+            }
+
+        }
+
+        @media (max-width: 1199px) and (min-width: 721px) {
+            /*Make 3-Day Cards display in row at middle breakpoint */
+            #three-day-forecast-display {
+                flex-direction: row;
+                overflow: scroll;
+                width: 95%;
+                margin: auto;
+            }
+
+            .card {
+                overflow: scroll;
+                margin: auto;
+                min-width: 350px;
+
+            }
+        }
+
+        @media (max-width: 720px) {
+            /*Make cards display at fixed width in column at small breakpoint*/
+            #three-day-forecast-display {
+                flex-direction: column;
+                align-items: center;
+                height: 270px;
+                overflow: scroll;
+                justify-content: normal;
+            }
+
+            .card {
+                max-width: 350px;
+            }
+
+            /*Hide Current Conditions & 7-Day Icons at small breakpoint*/
+            #seven-day-forecast-display, #current-info {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body class="container-fluid">
+<div class="row">
+
+    <!--Left side of screen: header at top, window with 3-day forecast on bottom-->
+    <section class="col-xl-4 text-center mx-auto left-side-color">
+        <header class="d-flex my-4 justify-content-between">
+            <div>
+                <i class="far fa-keyboard"></i>
+            </div>
+            <div class="mx-2">
+                <h2>10-Key Weather</h2>
+                <h2>テンキー予報</h2>
+            </div>
+            <div>
+                <i class="fas fa-cloud-sun-rain"></i>
+            </div>
+        </header>
+
+        <section>
+            <div id="current-location" class="mb-4">
+                <h2 id="current-location-display">
+                    San Antonio, Texas,<br>
+                    United States of America
+                </h2>
+            </div>
+            <div id="three-day-forecast-display" class="card-holder d-flex mx-xl-4 my-2 ">
+            </div>
+        </section>
+    </section>
+
+    <!--Right side of screen: large map at top, search bar in middle, 7-day-icon-forecast at bottom-->
+    <main class="col-xl-8 right-side-color">
+        <div id="current-info" class="my-4">
+            <div id="current-conditions-display" class="bigger-text"></div>
+        </div>
+        <div id="map-display" class="my-4"></div>
+        <div id="seven-day-forecast-display" class="my-4">7-Day Icon Forecast</div>
+        <footer class="my-4">
+            <a href="https://darksky.net/poweredby/" target="_blank">Powered by Dark Sky</a>
+        </footer>
+    </main>
+
+</div>
+
+<script src="js/api-keys.js"></script>
+var mapboxToken = 'pk.eyJ1IjoiY2FkZW5ham9objg1IiwiYSI6ImNqemloYnZyeTE1dGUzY3BpNzh6dGpkNGkifQ.uEExfH_RcYil15qPUNN1xg';
+var darkSkyKey = '101189f650ed158e43edf83b1614e5b7';
+<script src="js/mapbox-utils.js"></script>
+<!--    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>-->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.0/mapbox-gl.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+    "use strict";
+    $(document).ready(function() {
+
+        //Weather Icon Array
+        var weatherIcons = [
+            {
+                condition: "clear-day",
+                source: "img/weather-map-icons/clear-day.svg"
+            },
+            {
+                condition: "clear-night",
+                source: "img/weather-map-icons/clear-night.svg"
+            },
+            {
+                condition: "cloudy",
+                source: "img/weather-map-icons/cloudy.svg"
+            },
+            {
+                condition: "fog",
+                source: "img/weather-map-icons/fog.svg"
+            },
+            {
+                condition: "partly-cloudy-day",
+                source: "img/weather-map-icons/partly-cloudy-day.svg"
+            },
+            {
+                condition: "partly-cloudy-night",
+                source: "img/weather-map-icons/partly-cloudy-night.svg"
+            },
+            {
+                condition: "rain",
+                source: "img/weather-map-icons/rain.svg"
+            },
+            {
+                condition: "sleet",
+                source: "img/weather-map-icons/sleet.svg"
+            },
+            {
+                condition: "snow",
+                source: "img/weather-map-icons/snow.svg"
+            },
+            {
+                condition: "wind",
+                source: "img/weather-map-icons/wind.svg"
+            }
+        ];
+
+        // Draw the map
+        mapboxgl.accessToken = mapboxToken;
+        var map = new mapboxgl.Map({
+            container: 'map-display',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            // zoom: 8.5,
+            zoom: 5,
+            center: [-98.4951, 29.4246]
+        });
+
+        // Draw the draggable marker
+        var marker = new mapboxgl.Marker({
+            draggable: true
+        })
+            .setLngLat([-98.4951, 29.4246])
+            .addTo(map);
+
+        // Build the search bar
+        var searchBar = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        });
+
+        map.addControl(searchBar);
+
+        // Ajax request to Dark Sky API
+        $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function(data) {
+
+            function renderOneDayForecast(ajaxObject, indexValue) {
+
+                var dynamicHtml = "<div class='card my-2'>";
+                //Display header with date
+                // In DST, API returns dates 1 day behind (time-stamp of 23:00)
+                // Add 1 hour to time (3600000 milliseconds) to compensate
+                var convertedTime = ajaxObject.daily.data[indexValue].time * 1000 + 3600000;
+                var dateObject = new Date(convertedTime);
+                // var dateObject = new Date(ajaxObject.daily.data[indexValue].time * 1000);
+                console.log(dateObject);
+                dynamicHtml += "<div class='card-header text-center py-2 bigger-text'>";
+                dynamicHtml += dateObject.toString().substring(0,10);
+                dynamicHtml += "</div>";
+                dynamicHtml += "<ul class='list-unstyled text-center'>";
+                // Display high and low temperatures
+                dynamicHtml += "<li class='px-2 pt-2 bigger-text'>";
+                dynamicHtml += "<span class='hi-temp'>" + Math.round(ajaxObject.daily.data[indexValue].temperatureHigh) + "&deg;</span>";
+                dynamicHtml += " | ";
+                dynamicHtml += "<span class='lo-temp'>" + Math.round(ajaxObject.daily.data[indexValue].temperatureLow) + "&deg;</span>";
+                dynamicHtml += "</li>";
+                //Display icon
+                weatherIcons.forEach(function(element) {
+                    if (element.condition === ajaxObject.daily.data[indexValue].icon) {
+                        dynamicHtml += "<img src='" + element.source + "'>";
+                    }
+                });
+                // Display summary
+                dynamicHtml += "<li class='px-2 pb-1'>" + ajaxObject.daily.data[indexValue].summary + "</li>";
+                // Display precipitation chance
+                dynamicHtml += "<li class='px-2 py-1'><span class='font-weight-bold'>Chance of precipitation:</span> " + Math.round((ajaxObject.daily.data[indexValue].precipProbability * 100)) + "&percnt;</li>";
+                // Display humidity
+                dynamicHtml += "<li class='px-2 py-1'><span class='font-weight-bold'>Humidity:</span> " + Math.round((ajaxObject.daily.data[indexValue].humidity * 100)) + "&percnt;</li>";
+                // Display wind speed
+                dynamicHtml += "<li class='px-2 pt-1 pb-2'><span class='font-weight-bold'>Wind Speed:</span> " + Math.round(ajaxObject.daily.data[indexValue].windSpeed) + " mph</li>";
+                dynamicHtml += "</ul>";
+                dynamicHtml += "</div>";
+                $("#three-day-forecast-display").append(dynamicHtml);
+            }
+
+            // Function to render forecasts for multiple days
+            function renderMultipleForecasts(ajaxObject, indexOfFirstDay, indexOfLastDay) {
+                for (var i = indexOfFirstDay; i <= indexOfLastDay; i++) {
+                    renderOneDayForecast(ajaxObject, i);
+                }
+            }
+
+            renderMultipleForecasts(data, 0, 2);
+
+            // Function to display current information for selected location
+
+            function renderCurrentInformation(ajaxObject) {
+                var dynamicHtml = "<ul class='list-unstyled d-flex flex-row justify-content-around align-items-center my-0'>";
+                // Display current temperature
+                dynamicHtml += "<li class='ml-2 text-center'><span class='font-weight-bold'>Current Temp: </span>";
+                dynamicHtml += Math.floor(ajaxObject.currently.temperature) + "&deg;";
+                dynamicHtml += "</li>";
+                dynamicHtml += "<li>&nbsp;|&nbsp;</li>";
+                // Display current icon
+                weatherIcons.forEach(function(element) {
+                    if (element.condition === ajaxObject.currently.icon) {
+                        dynamicHtml += "<li>";
+                        dynamicHtml += "<img src='" + element.source + "'>";
+                        dynamicHtml += "</li>";
+                        dynamicHtml += "<li>&nbsp;|&nbsp;</li>";
+                    }
+                });
+                // Display "feels like" temperature
+                dynamicHtml += "<li class='text-center'><span class='font-weight-bold'>Feels like: </span>";
+                dynamicHtml += Math.round(ajaxObject.currently.apparentTemperature) + "&deg;";
+                dynamicHtml += "</li>";
+                dynamicHtml += "<li>&nbsp;|&nbsp;</li>";
+                // Display current humidity
+                dynamicHtml += "<li class='text-center'><span class='font-weight-bold'>Humidity: </span>";
+                dynamicHtml += Math.floor(ajaxObject.currently.humidity * 100) + "&percnt;";
+                dynamicHtml += "</li>";
+                dynamicHtml += "<li>&nbsp;|&nbsp;</li>";
+                // Display current wind speed
+                dynamicHtml += "<li class='mr-2 text-center'><span class='font-weight-bold'>Wind Speed: </span>";
+                dynamicHtml += Math.floor(ajaxObject.currently.windSpeed) + " mph";
+                dynamicHtml += "</li>";
+                dynamicHtml += "</ul>";
+
+                $("#current-conditions-display").html(dynamicHtml);
+            }
+
+            renderCurrentInformation(data);
+
+            // Function to render 7-day icon forecast
+            function renderSevenDayIcons(ajaxObject) {
+                var dynamicHtml = "<div class='d-flex justify-content-around'>";
+                for (var i=1; i<=7; ++i) {
+                    dynamicHtml += "<div class='d-flex flex-column'>";
+                    dynamicHtml += "<div class='text-center seven-day-name bigger-text font-weight-bold'>";
+                    var dateObject = new Date(ajaxObject.daily.data[i].time * 1000);
+                    dynamicHtml += dateObject.toString().substring(0,3);
+                    dynamicHtml += "</div>";
+                    weatherIcons.forEach(function(element) {
+                        if (element.condition === ajaxObject.daily.data[i].icon) {
+                            dynamicHtml += "<div class='seven-day-icon'>";
+                            dynamicHtml += "<img src='" + element.source + "'>";
+                            dynamicHtml += "</div>";
+                        }
+                    });
+                    dynamicHtml += "</div>";
+                }
+                dynamicHtml += "</div>";
+                $("#seven-day-forecast-display").html(dynamicHtml);
+            }
+
+            renderSevenDayIcons(data);
+
+            // Function to gather new coordinates & render new forecast after marker is dragged
+            function onDragEnd() {
+                var newLatitude = marker.getLngLat().lat;
+                var newLongitude = marker.getLngLat().lng;
+                // reverse geocode method from mapbox-geocoder-utils.js to display new address
+                reverseGeocode({lng: newLongitude, lat: newLatitude}, mapboxToken).then(function(results) {
+                    $("#current-location-display").html(results);
+                });
+                $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + newLatitude + "," + newLongitude).done(function(updatedData) {
+                    $("#three-day-forecast-display").html("");
+                    renderMultipleForecasts(updatedData, 0, 2);
+                    renderCurrentInformation(updatedData);
+                    renderSevenDayIcons(updatedData);
+                });
+            }
+
+            marker.on('dragend', onDragEnd);
+
+            // Function to gather new coordinates & render new forecast after location is searched
+            function onSearchNewLocation(ajaxObject) {
+                var newLatitude = ajaxObject.result.center[1];
+                var newLongitude = ajaxObject.result.center[0];
+                $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + newLatitude + "," + newLongitude).done(function(updatedData) {
+                    $("#three-day-forecast-display").html("");
+                    renderMultipleForecasts(updatedData, 0, 2);
+                    renderCurrentInformation(updatedData);
+                    renderSevenDayIcons(updatedData);
+                    $("#current-location-display").html(ajaxObject.result.place_name);
+                });
+            }
+
+            searchBar.on('result', function(e) {
+                onSearchNewLocation(e);
+            });
+
+        });
+    });
+
+</script>
+
+</body>
+</html>
