@@ -176,11 +176,13 @@ blockquote {
 }
 
 /*Media Queries for Breakpoints*/
+@media (min-width: 769px) {
+    #custom #navbar-list {
+        flex-direction: column;
+    }
+}
 
 @media (max-width: 768px) {
-    #custom #navbar-list {
-        flex-direction: row;
-    }
 
     #custom .navbar-item {
         font-size: 1em;
