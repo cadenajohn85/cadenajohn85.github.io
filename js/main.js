@@ -16,12 +16,12 @@ $(document).ready(function() {
         event.preventDefault();
 
         var projectPortfolio = [
-            {
-                name: "10-Key Weather",
-                imgSrc: "img/weather-map-sc.png",
-                href: "port/tenkey/tenkey.html",
-                description: "A web-based weather forecast app that makes use of the Dark Sky and Mapbox APIs."
-            },
+            // {
+            //     name: "10-Key Weather",
+            //     imgSrc: "img/weather-map-sc.png",
+            //     href: "port/tenkey/tenkey.html",
+            //     description: "A web-based weather forecast app that makes use of the Dark Sky and Mapbox APIs."
+            // },
 
             {
                 name: "Memory",
@@ -82,7 +82,7 @@ $(document).ready(function() {
         dynamicHtml += "</blockquote>";
 
         dynamicHtml += "<p>";
-        dynamicHtml += "An avid foodie and travel enthusiast, John also enjoys reading, quilting, and singing in his local church choir in his spare time."
+        dynamicHtml += "An avid foodie and travel enthusiast, John also enjoys baking, quilting, and singing in his local church choir in his spare time.";
         dynamicHtml += "</p>";
 
         $("#viewport").html(dynamicHtml);
