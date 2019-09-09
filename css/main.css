@@ -1,21 +1,35 @@
+:root {
+    --my-black: #363635;
+    --my-red: #AC3931;
+    --my-yellow: #E8C547;
+    --my-salmon: #FCAA67;
+    --my-orange: #ED9B40;
+    --my-gray: #E8E8E8;
+    --my-teal: #03CEA4;
+    --my-mint: #CCE2A3;
+    --my-blue: #4062BB;
+    --my-indigo: #52489C;
+}
+
+
 body {
-    background: #363635;
-    border: solid 5px #363635;
+    background: var(--my-black);
+    border: solid 5px var(--my-black);
 }
 
 .sashing {
-    border: solid 5px #363635;
+    border: solid 5px var(--my-black);
 }
 
 /*Top-left box: brand bar*/
 
 .top-left {
-    background: #AC3931;
+    background: var(--my-red);
 }
 
 .brand-bar {
-    background: #363635;
-    color: #E8C547;
+    background: var(--my-black);
+    color: var(--my-yellow);
 }
 
 .brand-bar:nth-of-type(odd) {
@@ -29,14 +43,14 @@ body {
 /*Top-center box: color blocking*/
 
 .top-center {
-    background: #FCAA67;
+    background: var(--my-salmon);
     min-height: 35px;
 }
 
 /*Top-right box: profile image*/
 
 .top-right {
-    background: #E8C547;
+    background: var(--my-yellow);;
 }
 
 .profile-image {
@@ -44,7 +58,7 @@ body {
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    border: solid 1px #363635;
+    border: solid 1px var(--my-black);
     /*Filter effect*/
     /*Source: http://www.codeblocq.com/2016/08/Turn-an-image-to-Black-and-White-on-hover-with-CSS/*/
     filter: grayscale(100%);
@@ -58,17 +72,17 @@ body {
 /*Middle-left box: Nav Bar*/
 
 .middle-left {
-    background: #ED9B40;
+    background: var(--my-orange);
     min-height: 35px;
 }
 
 .navbar-item {
-    background: #363635;
+    background: var(--my-black);
     font-size: 1.75em;
 }
 
 .navbar-item a {
-    color: #E8C547;
+    color: var(--my-yellow);;
 }
 
 .navbar-item:nth-of-type(odd) {
@@ -83,7 +97,7 @@ body {
     /*Dynamic elements styled at bottom of style-sheet*/
 
 .middle-center {
-    background: #E8E8E8;
+    background: var(--my-gray);
     height: 425px;
     overflow: auto;
 }
@@ -91,27 +105,27 @@ body {
 /*Middle-right box: color blocking*/
 
 .middle-right {
-    background: #03CEA4;
+    background: var(--my-teal);
     min-height: 35px;
 }
 
 /*Bottom-left box: social media icons*/
 
 .bottom-left {
-    background: #CCE2A3;
+    background: var(--my-mint);
 }
 
 /*Bottom-center box: color blocking*/
 
 .bottom-center {
-    background: #4062BB;
+    background: var(--my-blue);
     min-height: 35px;
 }
 
 /*Bottom-right box: color blocking*/
 
 .bottom-right {
-    background: #52489C;
+    background: var(--my-indigo);
     min-height: 35px;
 }
 
@@ -120,11 +134,11 @@ body {
     /*Styling of project portfolio cards*/
 
 #portfolio-list {
-    color: #E8C547;
+    color: var(--my-yellow);;
 }
 
 .port-header {
-    background: #363635;
+    background: var(--my-black);
     border-radius: 5px 5px 0 0;
     text-align: center;
 }
@@ -134,7 +148,7 @@ body {
 }
 
 .port-image-container {
-    background: #363635;
+    background: var(--my-black);
     margin-bottom: 8px;
 }
 
@@ -147,7 +161,7 @@ body {
 }
 
 .port-description {
-    background: #363635;
+    background: var(--my-black);
     border-radius: 0 0 5px 5px ;
 }
 
@@ -158,8 +172,8 @@ body {
     /*Styling of "Background" section items*/
 
 blockquote {
-    background: #363635;
-    color: #E8C547;
+    background: var(--my-black);
+    color: var(--my-yellow);;
     border-radius: 5px;
     padding: 10px 20px;
     margin: 0 .5em 1em;
